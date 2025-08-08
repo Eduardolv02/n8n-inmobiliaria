@@ -5,22 +5,21 @@ services:
     ports:
       - "5678:5678"
     environment:
-      - N8N_BASIC_AUTH_ACTIVE=true
-      - N8N_BASIC_AUTH_USER=admin
-      - N8N_BASIC_AUTH_PASSWORD=Albondiga25.
-      - N8N_HOST=n8n-inmobiliaria-axt2.onrender.com
-      - N8N_PORT=5678
-      - N8N_PROTOCOL=https
-      - N8N_OAUTH_CALLBACK_URL=https://n8n-inmobiliaria-axt2.onrender.com/rest/oauth2-credential/callback
+DB_TYPE=postgresdb
+DB_POSTGRESDB_HOST=dpg-d2anv4er433s7390r450-a.oregon-postgres.render.com
+DB_POSTGRESDB_PORT=5432
+DB_POSTGRESDB_DATABASE=n8n_db_w6be
+DB_POSTGRESDB_USER=n8n_db_w6be_user
+DB_POSTGRESDB_PASSWORD=BHp5QayX1TYjmKHPgUUUPfNA59MYgepu
+DB_POSTGRESDB_SSLMODE=require
 
-      # PostgreSQL database config
-      - DB_TYPE=postgresdb
-      - DB_POSTGRESDB_HOST=dpg-d2anv4er433s7390r450-a.oregon-postgres.render.com
-      - DB_POSTGRESDB_PORT=5432
-      - DB_POSTGRESDB_DATABASE=n8n_db_w6be
-      - DB_POSTGRESDB_USER=n8n_db_w6be_user
-      - DB_POSTGRESDB_PASSWORD=BHp5QayX1TYjmKHPgUUUPfNA59MYgepu
-      - DB_POSTGRESDB_SSLMODE=require
+N8N_BASIC_AUTH_ACTIVE=true
+- N8N_BASIC_AUTH_USER=admin
+      - N8N_BASIC_AUTH_PASSWORD=Albondiga25.
+N8N_HOST=n8n-inmobiliaria-axt2.onrender.com
+N8N_PORT=5678
+N8N_PROTOCOL=https
+N8N_OAUTH_CALLBACK_URL=https://n8n-inmobiliaria-axt2.onrender.com/rest/oauth2-credential/callback
 
     volumes:
       - ./n8n-data:/home/node/.n8n
