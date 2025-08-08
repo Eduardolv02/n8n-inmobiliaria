@@ -10,7 +10,7 @@ services:
       - N8N_BASIC_AUTH_USER=silverdry
       - N8N_BASIC_AUTH_PASSWORD=silverdry02
       - N8N_HOST=n8n-inmobiliaria-axt2.onrender.com
-      - N8N_PORT=5678
+      - N8N_PORT=443
       - N8N_PROTOCOL=https
       - N8N_OAUTH_CALLBACK_URL=https://n8n-inmobiliaria-axt2.onrender.com/rest/oauth2-credential/callback
 
