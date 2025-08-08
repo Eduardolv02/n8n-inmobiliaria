@@ -3,17 +3,18 @@ services:
   n8n:
     image: n8nio/n8n:latest
     restart: always
-    environment:
-      - N8N_BASIC_AUTH_ACTIVE=true
-      - N8N_BASIC_AUTH_USER=silverdry
-      - N8N_BASIC_AUTH_PASSWORD=silverdry02
-      - N8N_HOST=n8n-inmobiliaria-axt2.onrender.com
-      - N8N_PORT=5678
-      - N8N_PROTOCOL=http
-      - WEBHOOK_URL=https://n8n-inmobiliaria-axt2.onrender.com
-      - N8N_OAUTH_CALLBACK_URL=https://n8n-inmobiliaria-axt2.onrender.com/rest/oauth2-credential/callback
-      - TRUST_PROXY=true
-      - LOG_LEVEL=debug
+ environment:
+  - N8N_BASIC_AUTH_ACTIVE=true
+  - N8N_BASIC_AUTH_USER=silverdry
+  - N8N_BASIC_AUTH_PASSWORD=silverdry02
+  - N8N_HOST=n8n-inmobiliaria-axt2.onrender.com
+  - N8N_PORT=5678
+  - N8N_PROTOCOL=http
+  - WEBHOOK_URL=https://n8n-inmobiliaria-axt2.onrender.com
+  - N8N_OAUTH_CALLBACK_URL=https://n8n-inmobiliaria-axt2.onrender.com/rest/oauth2-credential/callback
+  - TRUST_PROXY=true
+  - LOG_LEVEL=debug
+
       # DB config
       - DB_TYPE=postgresdb
       - DB_POSTGRESDB_HOST=dpg-d2anv4er433s7390r450-a.oregon-postgres.render.com
