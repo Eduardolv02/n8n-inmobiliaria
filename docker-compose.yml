@@ -10,6 +10,7 @@ services:
       - N8N_HOST=n8n-inmobiliaria-axt2.onrender.com
       - N8N_PORT=5678
       - N8N_PROTOCOL=http
+      - WEBHOOK_URL=https://n8n-inmobiliaria-axt2.onrender.com
       - N8N_OAUTH_CALLBACK_URL=https://n8n-inmobiliaria-axt2.onrender.com/rest/oauth2-credential/callback
       - TRUST_PROXY=true
       - LOG_LEVEL=debug
@@ -21,5 +22,7 @@ services:
       - DB_POSTGRESDB_USER=n8n_db_w6be_user
       - DB_POSTGRESDB_PASSWORD=BHp5QayX1TYjmKHPgUUUPfNA59MYgepu
       - DB_POSTGRESDB_SSLMODE=require
+    ports:
+      - "5678:5678"
     volumes:
-      - ./n8n-data:/home/node/.n8n 
+      - ./n8n-data:/home/node/.n8n
