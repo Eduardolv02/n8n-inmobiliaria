@@ -3,10 +3,6 @@ services:
   n8n:
     image: n8nio/n8n:latest
     restart: always
-    # No exponemos el puerto 5678 públicamente, Render hará el proxy https
-    # Si quieres exponer localmente solo, usa:
-    # ports:
-    #   - "127.0.0.1:5678:5678"
     environment:
       - N8N_BASIC_AUTH_ACTIVE=true
       - N8N_BASIC_AUTH_USER=silverdry
@@ -16,7 +12,8 @@ services:
       - N8N_PROTOCOL=http
       - N8N_OAUTH_CALLBACK_URL=https://n8n-inmobiliaria-axt2.onrender.com/rest/oauth2-credential/callback
       - TRUST_PROXY=true
-      # Configuración de la base de datos
+      - LOG_LEVEL=debug
+      # DB config
       - DB_TYPE=postgresdb
       - DB_POSTGRESDB_HOST=dpg-d2anv4er433s7390r450-a.oregon-postgres.render.com
       - DB_POSTGRESDB_PORT=5432
