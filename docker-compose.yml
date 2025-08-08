@@ -22,4 +22,4 @@ services:
       - DB_POSTGRESDB_PASSWORD=BHp5QayX1TYjmKHPgUUUPfNA59MYgepu
       - DB_POSTGRESDB_SSLMODE=require
     volumes:
-      - ./n8n-data:/home/node/.n8n
+      - ./n8n-data:/home/node/.n8n 
