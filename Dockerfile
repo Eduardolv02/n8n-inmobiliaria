@@ -1,29 +1,32 @@
-# Imagen base de n8n
-FROM n8nio/n8n:latest
+# Usa la imagen oficial de n8n
+FROM n8nio/n8n:1.105.4
 
-# Establecer variables de entorno directamente (opcional, pero NO recomendado para datos sensibles)
-# Lo ideal es ponerlas en Render -> Environment o en un archivo .env
-ENV N8N_BASIC_AUTH_ACTIVE=true \
-    N8N_BASIC_AUTH_USER=silverdry \
-    N8N_BASIC_AUTH_PASSWORD=silverdry02 \
-    N8N_HOST=n8n-inmobiliaria-axt2.onrender.com \
-    N8N_OAUTH_CALLBACK_URL=https://n8n-inmobiliaria-axt2.onrender.com/rest/oauth2-credential/callback \
-    N8N_PORT=5678 \
-    N8N_PROTOCOL=http \
-    TRUST_PROXY=true \
-    WEBHOOK_URL=https://n8n-inmobiliaria-axt2.onrender.com
+# Establece la carpeta de trabajo
+WORKDIR /data
 
-# Configuración para Supabase
-ENV SUPABASE_URL=https://hswdnipmofzcgziszfei.supabase.co \
-    SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhzd2RuaXBtb2Z6Y2d6aXN6ZmVpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ3NTY2MjQsImV4cCI6MjA3MDMzMjYyNH0.R-UTPwj0OmHdXl4-b0HnycM8PkBT2-3k-WttWSVyfXE \
-    SUPABASE_DB_PASSWORD=Awakate33(
+# Copia el archivo .env (Render también puede inyectar variables desde su panel)
+# Si usas Render, NO pongas aquí el .env directamente para evitar exponer claves
+# COPY .env /data/.env
 
-# Configuración API
-ENV OPENAI_API_KEY=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 \
-    DROPBOX_ACCESS_TOKEN=sl.u.AF5kpiCJcoZ9Hid0WP06z-U7aPIJGyQhDErCy_S3Ih-pAmqxy7HT27yewyuAJgxcTuNJclnXkKWi4KDet8dYImVNZvcR86nHrPiE3MAHSsSpIg1pbYTW2c-Zwb-MzD1xuAgtHuvnl_xX0YAJA_rqN5Rh5rTX543VvoNnO2eRaPaS4RmCw371dbBfG4x7khFQZc2qCni1NkSNdSXS-m4ewcJRyfCrKQWdSYb5sccvLjWiZCtzpwPfseFwkiIWv8IScw3DmHhL1EPgWUkhp3DKqYpuXhh0k6MRRn-sbgvALNOLVLAfm5Qt11EXocWKL_pV_Z6NhjZQC67835-aHZPAK1lgenBaZsCg2X8DCtzqZpUoWduLFVEsVYjYTzpDkO4OR-CdviFjySC9oIwr_WhZjf_ctpNsBz6qaLW0v0HsOmGdZOsuZncfBpsfjaMEmVD_y4Xq7SkCeTWSC--zf-9SLTqtcJedjdIJNfYP_2Basr2zbZEE6FGyigJHU7Tj5yyGMKFIlxNb3j-XUQGah4WMzmKJSHHXcV7bVzFCk3McsOgrp4-wVn7Ox07ByyiqOvvAOLGCDcOoEWGuO5GRMnv0duJyaxUuRgBCOBEhTH1mMYssBl-QASppILKP7IsCeVh84nkR1RFq301av4Q3B7ueLvznRclGosTlKNgCP9BHhDT8kIRZ9je1NvqpjHzBEif82miTijXNSu4uC11MA-eeMzVHKHM69i919cHT6W2_CvAmcKJXjowFB-Zj1Go3xz79Jz3zx8nLFvNHksob0na7JCTCxbBhejYoOfXkbhLoNCnaRtVd15dhqtu7j61iENMt-8fOLaUwnXEkCKuWif04Iy1Przc3dMdrlwsY5Pt-JtHEYahEu4Q9y4viPe9wE4l1Uy6gmhC1TOzHXuxvNBZKx5u0RC0QRawnSZzr6QlXJjVhegLLfvK2Epz1kNRd6vVDiy989ssKk2isQBSaotvF8bBR64F_W_rEWZ4qlA8NIvkbEXA184a37cAN60mvEVX-R6ExcSNsQYQMrIAYF6Atk38p_B3RpQDaHUK2CZSGh7M1pmmYpVu7t5N-ZAX1vKmq4ydHMcACiqH9qz1JGgs78LFs9kpZJqx-3LQHlBcy4u5JTovrX_DGFqsnjTdt2DQp147M3-GY0nZHPKmm8w3s8T3si3eq9vCDoNV51o_I0V9usVyMG5QEJ8t4BkW_u7s2ydeoGMbVySLOxkmPQyCBCw0kOkWESc34GosmJq2gHu9wGYZGxMdTsCsuIbtgnMyKyHdGndP1m1sGNz3VF-rKsYl8BbHmwUTq4uStumwm9v9JZGTKoOVs6iUrh2XvwQvFwnjCEnG6JCpqmz6vCKpRv7sqf7Dxtg7_iv7mSi3jwZO7PTNj9RJUv_vB0a0DyM3Kuz3VKdnaS_22sEERN9IqI8IYuH8LW_h4PN5pqk6-NZIgyA
-
-# Exponer puerto de n8n
+# Puerto por defecto de n8n
 EXPOSE 5678
 
-# Comando por defecto
-CMD ["n8n", "start"]
+# Configura variables para que Render mantenga datos persistentes
+ENV N8N_BASIC_AUTH_ACTIVE=true
+ENV N8N_BASIC_AUTH_USER=silverdry
+ENV N8N_BASIC_AUTH_PASSWORD=silverdry02
+
+# Base de datos Supabase
+ENV DB_TYPE=postgresdb
+ENV DB_POSTGRESDB_HOST=YOUR_SUPABASE_HOST
+ENV DB_POSTGRESDB_PORT=5432
+ENV DB_POSTGRESDB_DATABASE=YOUR_SUPABASE_DB
+ENV DB_POSTGRESDB_USER=YOUR_SUPABASE_USER
+ENV DB_POSTGRESDB_PASSWORD=YOUR_SUPABASE_PASSWORD
+ENV DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED=false
+
+# Evitar que se pierdan flujos/credenciales
+VOLUME ["/data"]
+
+# Ejecuta n8n
+CMD ["n8n"]
