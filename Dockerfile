@@ -1,14 +1,10 @@
-# Imagen base oficial de N8N
 FROM n8nio/n8n:latest
 
-# Establecer variables de entorno por defecto
+# Configuración del entorno
 ENV NODE_ENV=production
 
-# Copiar archivo .env dentro del contenedor
-COPY .env /home/node/.n8n/.env
-
-# Exponer el puerto que usa N8N
+# Puerto por defecto de n8n
 EXPOSE 5678
 
-# Comando para iniciar N8N
+# Comando de arranque
 CMD ["n8n", "start"]
