@@ -3,3 +3,7 @@
   "private": true,
   "dependencies": {}
 }
+
+"scripts": {
+  "start": "node keep-alive.js & n8n start"
+}
