@@ -1,7 +1,6 @@
 FROM n8nio/n8n:latest
 
 USER root
-RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 
 USER node
 
@@ -21,15 +20,6 @@ ENV DB_POSTGRESDB_USER=postgres
 ENV DB_POSTGRESDB_PASSWORD=silverdry02
 ENV DB_POSTGRESDB_SSL=true
 
-# Script de keep-alive
-RUN echo '#!/bin/sh\n\
-while true; do\n\
-  curl -s https://n8n-inmobiliaria-axt2.onrender.com > /dev/null\n\
-  sleep 300\n\
-done &' > /home/node/keepalive.sh && chmod +x /home/node/keepalive.sh
-
 # Exponer puerto
 EXPOSE 5678
 
-# Arrancar keep-alive y n8n juntos
-CMD ["/bin/sh", "-c", "/home/node/keepalive.sh & n8n start"]
